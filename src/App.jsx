@@ -1,33 +1,25 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
+import Formulario from './components/Formulario';
+import Alert from './components/Alert';
+import Listado from './components/Listado';
+import { BaseColaboradores } from "./components/BaseColaboradores.js"
+import Buscador from './components/Buscador';
 
 function App() {
-  const [count, setCount] = useState(0)
+ const [colaboradores, setColaboradores]=useState(BaseColaboradores);
+ const [buscador, setBuscador]=useState([]);
+ const [buscadorFlag, setBuscadorFlag]=useState(true);
+ const [alert, setAlert]=useState({ error: "", msg: "", color: "" });
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Formulario colaboradores={colaboradores} setColaboradores={setColaboradores} setAlert={setAlert}  />
+      {alert.msg && <Alert mensaje={alert.msg} variant={alert.color} /> }
+      <Buscador colaboradores={colaboradores} setBuscador= {setBuscador} setBuscadorFlag={setBuscadorFlag} />
+      <Listado colaboradores={ buscadorFlag ? colaboradores:buscador} /> 
     </>
   )
 }
