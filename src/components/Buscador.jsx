@@ -7,14 +7,14 @@ const Buscador = ({colaboradores, setBuscador, setBuscadorFlag}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         let buscar='';
-  
+
         const filteredCol= colaboradores.filter ((colaborador) => {
 
-            buscar= colaborador.nombre.toUpperCase( ) 
-                + colaborador.correo.toUpperCase( ) 
-                + colaborador.edad.toUpperCase( )
-                + colaborador.cargo.toUpperCase( )
-                + colaborador.telefono.toUpperCase( );
+            buscar=colaborador.nombre.toUpperCase()  
+                + colaborador.correo.toUpperCase() 
+                + colaborador.edad.toUpperCase()
+                + colaborador.cargo.toUpperCase()
+                + colaborador.telefono.toUpperCase();
 
             if (buscar.toUpperCase( ).includes (search.toUpperCase( ))) {
                 setBuscadorFlag(false);
@@ -29,11 +29,8 @@ const Buscador = ({colaboradores, setBuscador, setBuscadorFlag}) => {
     }
     return (
       <div>
-            <form onSubmit={handleSubmit} >
-                <label htmlFor="">Nombre</label>
-                <input type="text" name="name" onChange={(e) => setSearch(e.target.value)} value={search} />
-                <button>Buscar</button>
-            </form>
+            <label htmlFor="">Buscar</label>
+            <input type="text" name="name" onKeyUp={handleSubmit} onChange={(e) => setSearch(e.target.value)} value={search} />
       </div>
     )
   }

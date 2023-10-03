@@ -9,6 +9,16 @@ const Formulario = ({colaboradores, setColaboradores, setAlert }) => {
   const [cargo, setCargo] = useState("");
   const [telefono, setTelefono] = useState("");
 
+  const asignaID=(arreglo)=>{
+    let id=1
+    let paso=[...arreglo]
+    if (paso.length>0){
+        const ordenado = paso.sort((x,y) => y.id - x.id)  ;
+        id= Number(ordenado[0].id) + 1;
+    }
+    return id
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -53,7 +63,7 @@ const Formulario = ({colaboradores, setColaboradores, setAlert }) => {
       msg: "Ingreso satisfactorio !",
       color: "success",
     });
-    const id=10
+    const id= asignaID(colaboradores)
     const colaborador = { id, nombre, correo, edad, cargo, telefono };
     setColaboradores([...colaboradores, colaborador]);
   };

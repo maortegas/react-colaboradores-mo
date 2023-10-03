@@ -18,8 +18,8 @@ const Listado = ({ colaboradores }) => {
       </thead>
       <tbody>
          {colaboradores.map((colaborador, index) => (
-                     <tr>
-                     <td>{index}</td>
+                     <tr key={colaborador.id}>
+                     <td>{colaborador.id}</td>
                      <td>{colaborador.nombre}</td>
                      <td>{colaborador.correo}</td>
                      <td>{colaborador.edad}</td>

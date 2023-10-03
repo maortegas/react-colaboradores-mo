@@ -8,6 +8,10 @@ import Listado from './components/Listado';
 import { BaseColaboradores } from "./components/BaseColaboradores.js"
 import Buscador from './components/Buscador';
 
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
+
 function App() {
  const [colaboradores, setColaboradores]=useState(BaseColaboradores);
  const [buscador, setBuscador]=useState([]);
@@ -16,10 +20,18 @@ function App() {
 
   return (
     <>
-      <Formulario colaboradores={colaboradores} setColaboradores={setColaboradores} setAlert={setAlert}  />
-      {alert.msg && <Alert mensaje={alert.msg} variant={alert.color} /> }
-      <Buscador colaboradores={colaboradores} setBuscador= {setBuscador} setBuscadorFlag={setBuscadorFlag} />
-      <Listado colaboradores={ buscadorFlag ? colaboradores:buscador} /> 
+      <div className="mx-4 m-5">
+        <Row>
+          <Col sm={12} md={9}>
+            <Buscador colaboradores={colaboradores} setBuscador= {setBuscador} setBuscadorFlag={setBuscadorFlag} />
+            <Listado colaboradores={ buscadorFlag ? colaboradores:buscador} /> 
+          </Col>
+          <Col md={3} className="">
+            <Formulario colaboradores={colaboradores} setColaboradores={setColaboradores} setAlert={setAlert}  />
+            {alert.msg && <Alert mensaje={alert.msg} variant={alert.color} /> }
+          </Col>
+        </Row>
+      </div>
     </>
   )
 }
