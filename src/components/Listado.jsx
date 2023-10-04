@@ -4,7 +4,7 @@ const Listado = ({ colaboradores }) => {
     
   return (
     <>
-      <h1>Listado de Colaborador</h1>
+      <h1>Lista de Colaborador</h1>
       <Table striped bordered hover variant="dark">
       <thead>
         <tr>

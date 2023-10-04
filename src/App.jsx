@@ -20,13 +20,15 @@ function App() {
 
   return (
     <>
-      <div className="mx-4 m-5">
+      <div className="container mx-4 m-5 w-75">
         <Row>
           <Col sm={12} md={9}>
             <Buscador colaboradores={colaboradores} setBuscador= {setBuscador} setBuscadorFlag={setBuscadorFlag} />
+          </Col>
+          <Col sm={12} md={9} className="">
             <Listado colaboradores={ buscadorFlag ? colaboradores:buscador} /> 
           </Col>
-          <Col md={3} className="">
+          <Col md={3}  className="mt-5">
             <Formulario colaboradores={colaboradores} setColaboradores={setColaboradores} setAlert={setAlert}  />
             {alert.msg && <Alert mensaje={alert.msg} variant={alert.color} /> }
           </Col>

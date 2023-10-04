@@ -29,8 +29,7 @@ const Buscador = ({colaboradores, setBuscador, setBuscadorFlag}) => {
     }
     return (
       <div>
-            <label htmlFor="">Buscar</label>
-            <input type="text" name="name" onKeyUp={handleSubmit} onChange={(e) => setSearch(e.target.value)} value={search} />
+            <input type="text" name="name" onKeyUp={handleSubmit} onChange={(e) => setSearch(e.target.value)} value={search} placeholder="Buscar un colaborador" />
       </div>
     )
   }
